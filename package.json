@@ -1,0 +1,9 @@
+{
+  "name": "node-APIREST-express",
+  "version": "1.0.0",
+  "description": "A simple e-commerce",
+  "main": "index.js",
+  "repository": "none",
+  "author": "Carlos && Ponce <srtager555@gmail.com>",
+  "license": "MIT"
+}
