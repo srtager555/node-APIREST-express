@@ -1,0 +1,1 @@
+This project is about a simple e-commerce to learn about the backend
