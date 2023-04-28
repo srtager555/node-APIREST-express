@@ -3,29 +3,24 @@
 const express = require("express");
 const app = express();
 const port = 3000;
+const { faker } = require("@faker-js/faker");
 
 const products = [
 	{
-		id: 1,
-		name: "iMac",
-		price: "2400 USD",
-	},
-	{
-		id: 2,
-		name: "iPhone",
-		price: "1000 USD",
-	},
-	{
-		id: 3,
-		name: "AppleWatch",
-		price: "700 USD",
-	},
-	{
-		id: 4,
-		name: "iPad",
-		price: "1200 USD",
+		id: -1,
+		name: faker.commerce.productName(),
+		price: parseInt(faker.commerce.price(), 10),
+		image: faker.image.imageUrl(),
 	},
 ];
+for (let index = 0; index < 100; index++) {
+	products.push({
+		id: index,
+		name: faker.commerce.productName(),
+		price: parseInt(faker.commerce.price(), 10),
+		image: faker.image.food(),
+	});
+}
 
 app.get("/", (req, res) => {
 	res.send("Hello");
