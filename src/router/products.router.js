@@ -18,8 +18,21 @@ for (let index = 0; index < 100; index++) {
 	});
 }
 
-router.get("", (req, res) => {
+router.get("/", (req, res) => {
 	res.json(products);
+});
+
+router.post("/", (req, res) => {
+	const b = req.body;
+
+	res.json({
+		message: "Creating...",
+		data: b,
+	});
+});
+
+router.get("/more-routes", (req, res) => {
+	res.send("A new route againt");
 });
 
 router.get("/:id", (req, res) => {
@@ -35,8 +48,24 @@ router.get("/:id", (req, res) => {
 	}
 });
 
-router.get("/more-routes", (req, res) => {
-	res.send("A new route againt");
+router.patch("/:id", (req, res) => {
+	const { id } = req.params;
+	const b = req.body;
+
+	res.json({
+		message: "updated",
+		id,
+		b,
+	});
+});
+
+router.delete("/:id", (req, res) => {
+	const { id } = req.params;
+
+	res.json({
+		message: "deleted",
+		id,
+	});
 });
 
 module.exports = { router };
