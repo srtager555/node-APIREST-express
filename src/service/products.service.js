@@ -1,4 +1,5 @@
 const faker = require("faker");
+const boom = require("@hapi/boom");
 
 class ProductsService {
 	constructor() {
@@ -36,7 +37,14 @@ class ProductsService {
 	}
 
 	async findOne(id) {
-		return this.products.find((item) => item.id === id);
+		const product = this.products.find((item) => item.id === id);
+		if (!product) {
+			throw boom.notFound("product not found");
+		}
+		if (product.isBlock) {
+			throw boom.conflict("product is block");
+		}
+		return product;
 	}
 
 	async update(id, changes) {
